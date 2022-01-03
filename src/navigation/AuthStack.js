@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/LoginScreen';
 import AppStack from '../navigation/AppStack';
 import EventDetailedScreen from '../screens/EventDetailedScreen';
+import PartyDetailedScreen from '../screens/PartyDetailedScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,10 @@ const AuthStack = () => {
       {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
       <Stack.Screen name="Main" component={AppStack} />
       <Stack.Screen name="EventDetailedPage" component={EventDetailedScreen} />
+      <Stack.Screen
+        name="PartyDetailedScreen"
+        component={PartyDetailedScreen}
+      />
     </Stack.Navigator>
   );
 };

@@ -12,17 +12,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
   textStyle: {
-    marginTop: 5,
+    justifyContent: 'center',
     alignItems: 'center',
   },
+  titleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+  },
   title: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'bold',
     color: 'black',
   },
-  subTitle: {
-    fontSize: 12,
+  description: {
+    fontSize: 14,
+    lineHeight: 20,
+    marginVertical: 20,
   },
 });
 

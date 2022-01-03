@@ -7,24 +7,19 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import styles from './styles';
-import EventCarouselItem from '../../components/EventCarouselItem';
+import Event from '../../components/Event';
+import Party from '../../components/Party';
 
 import event from '../../../assets/data/events';
+import party from '../../../assets/data/partys';
 
 const HomeScreen = () => {
   const width = useWindowDimensions().width;
 
   return (
     <View>
-      <FlatList
-        data={event}
-        renderItem={({ item }) => <EventCarouselItem event={item} />}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        snapToInterval={width - 180}
-        snapToAlignment="center"
-        decelerationRate={'fast'}
-      />
+      <Event event={event} />
+      <Party party={party} />
     </View>
   );
 };
