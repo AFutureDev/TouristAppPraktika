@@ -4,7 +4,7 @@ import HomeScreen from '../screens/HomeScreen';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Image } from 'react-native';
-import { logo } from '../../assets/images';
+import EventDetailedScreen from '../screens/EventDetailedScreen';
 
 const Drawer = createDrawerNavigator();
 
