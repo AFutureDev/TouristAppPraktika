@@ -15,11 +15,12 @@ const AuthStack = () => {
         headerBackground: () => (
           <Image
             style={{
-              width: 25,
+              width: 60,
               height: 25,
               justifyContent: 'center',
               alignSelf: 'center',
-              marginTop: 10,
+              alignItems: 'center',
+              marginTop: 20,
             }}
             source={require('../../assets/images/logo.png')}
           />

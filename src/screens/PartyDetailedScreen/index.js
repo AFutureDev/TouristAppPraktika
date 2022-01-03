@@ -17,9 +17,24 @@ const PartyDetailedScreen = () => {
         <Text style={styles.title}>{party.title}</Text>
       </View>
 
+      <View>
+        <View style={styles.dateContainer}>
+          <Text style={styles.dateText}>{party.date}</Text>
+        </View>
+        <View style={styles.priceContainer}>
+          <Text style={styles.priceText}>{party.subTitle}</Text>
+        </View>
+        <View>
+          <Pressable style={styles.ticketContainer}>
+            <Text style={styles.ticketText}>Įsigyti bilietus (Paysera tickets)</Text>
+          </Pressable>
+        </View>
+      </View>
+      <View>
+        <Image style={styles.image} source={{ uri: party.image }} />
+        <Text style={styles.description}>{party.description}</Text>
+      </View>
       {/* Image */}
-      <Image style={styles.image} source={{ uri: party.image }} />
-      <Text style={styles.description}>{party.description}</Text>
     </ScrollView>
   );
 };

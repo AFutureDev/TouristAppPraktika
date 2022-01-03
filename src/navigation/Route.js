@@ -4,17 +4,22 @@ import LoginScreen from '../screens/LoginScreen';
 import AppStack from '../navigation/AppStack';
 import EventDetailedScreen from '../screens/EventDetailedScreen';
 import PartyDetailedScreen from '../screens/PartyDetailedScreen';
-import Route from './Route';
+import RestaurantDetailedScreen from '../screens/RestaurantDetailedScreen';
 
 const Stack = createNativeStackNavigator();
 
-const AuthStack = () => {
+const Route = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Route" component={Route} />
+      <Stack.Screen name="Main" component={AppStack} />
+      <Stack.Screen name="EventDetailedPage" component={EventDetailedScreen} />
+      <Stack.Screen
+        name="PartyDetailedScreen"
+        component={PartyDetailedScreen}
+      />
+      <Stack.Screen name="RestaurantDetailedPage" component={RestaurantDetailedScreen} />
     </Stack.Navigator>
   );
 };
 
-export default AuthStack;
+export default Route;

@@ -9,7 +9,7 @@ const LoginScreen = () => {
     <View>
       <Pressable
         style={{ justifyContent: 'center', alignItems: 'center' }}
-        onPress={() => navigation.navigate('Main')}
+        onPress={() => navigation.navigate('Route')}
       >
         <Text>Login</Text>
       </Pressable>
