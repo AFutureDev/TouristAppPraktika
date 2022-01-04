@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderRadius: 10,
     overflow: 'hidden',
+    marginBottom: 20,
   },
   row: {
     flexDirection: 'row',
