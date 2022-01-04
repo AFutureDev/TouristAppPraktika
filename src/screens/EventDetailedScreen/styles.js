@@ -15,6 +15,19 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    margin: 10,
+  },
+  gMap: {
+    width: 120,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderColor: '#333333',
+    borderWidth: 1,
+  },
+  gText: {
+    fontWeight: 'bold',
   },
   textStyle: {
     justifyContent: 'center',
@@ -22,7 +35,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     margin: 10,
   },
   title: {

@@ -12,7 +12,7 @@ const Event = (props) => {
     <View>
       <FlatList
         data={event}
-        keyExtractor={(e, idx) => idx}
+        keyExtractor={(e) => e.id}
         renderItem={({ item }) => (
           <EventCarouselItem
             allEvents={event}
