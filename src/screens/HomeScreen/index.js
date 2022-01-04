@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
-  FlatList,
   useWindowDimensions,
+  ScrollView,
+  Pressable,
 } from 'react-native';
 import styles from './styles';
 import Event from '../../components/Event';
@@ -18,15 +18,62 @@ import restaurant from '../../../assets/data/restaurants';
 const HomeScreen = () => {
   const width = useWindowDimensions().width;
 
+  const [allEvents, setAllEvents] = useState([...event]);
+
+
   return (
-    <View>
-      <Event event={event} />
-      <Party party={party} />
+    <ScrollView>
+      <View>
+        <View style={[styles.row]}>
+          <Pressable
+            onPress={(e) => {
+              allEvents.length !== 0
+                ? setAllEvents(allEvents.filter((e) => e.isVisited === true))
+                : setAllEvents(event);
+            }}
+          >
+            <Text>Lankytinos vietos</Text>
+          </Pressable>
+          <Pressable
+            onPress={(e) => {
+              setAllEvents(event.filter((e) => e.isVisited !== true));
+            }}
+          >
+            <Text>Visos lankytinos vietos</Text>
+          </Pressable>
+        </View>
+
+        <Event
+          event={allEvents.length === 0 ? event : allEvents}
+          setAllEvents={setAllEvents}
+        />
+      </View>
+
+      <View>
+        <View style={styles.row}>
+          <Pressable onPress={() => console.warn('pressed')}>
+            <Text>Renginiai netoliese</Text>
+          </Pressable>
+          <Pressable onPress={() => console.warn('pr2')}>
+            <Text>Renginių sąrašas</Text>
+          </Pressable>
+        </View>
+
+        <Party party={party} />
+      </View>
+
       <View style={[styles.bannerContainer, { width: width - 20 }]}>
         <Text>Full Banner Ad - 468x60</Text>
       </View>
-      <Restaurant restaurant={restaurant} />
-    </View>
+
+      <View>
+        <View style={styles.restItem}>
+          <Text>Užkasti netoli</Text>
+        </View>
+        <Restaurant restaurant={restaurant} />
+      </View>
+
+    </ScrollView>
   );
 };
 

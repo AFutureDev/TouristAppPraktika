@@ -4,12 +4,22 @@ import EventCarouselItem from '../EventCarouselItem';
 
 const Event = (props) => {
   const event = props.event;
+  const setAllEvents = props.setAllEvents;
+
   const width = useWindowDimensions().width;
+
   return (
     <View>
       <FlatList
         data={event}
-        renderItem={({ item }) => <EventCarouselItem event={item} />}
+        keyExtractor={(e, idx) => idx}
+        renderItem={({ item }) => (
+          <EventCarouselItem
+            allEvents={event}
+            setAllEvents={setAllEvents}
+            event={item}
+          />
+        )}
         horizontal
         showsHorizontalScrollIndicator={false}
         snapToInterval={width - 180}

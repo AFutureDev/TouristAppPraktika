@@ -11,6 +11,9 @@ import { useNavigation } from '@react-navigation/native';
 
 const EventCarouselItem = (props) => {
   const event = props.event;
+  const setAllEvents = props.setAllEvents;
+  const allEvents = props.allEvents;
+
   const width = useWindowDimensions().width;
   const navigation = useNavigation();
 
@@ -20,7 +23,15 @@ const EventCarouselItem = (props) => {
 
   return (
     <Pressable
-      onPress={goToEventDetailedPage}
+      onPress={() => {
+        const visited = allEvents.map((e) => {
+          if (e.id !== event.id) return e;
+          return { ...e, isVisited: true };
+        });
+        // console.log(visited);
+        setAllEvents([...visited]);
+        goToEventDetailedPage();
+      }}
       style={[styles.container, { width: width - 180 }]}
     >
       {/* Image */}
