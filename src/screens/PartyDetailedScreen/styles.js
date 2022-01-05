@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     margin: 10,
   },
   title: {

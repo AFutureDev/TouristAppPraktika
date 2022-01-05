@@ -11,6 +11,36 @@ export default [
       longitude: 23.9036,
     },
     isVisited: false,
+    menu: [
+      {
+        id: '0',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 1',
+        price: '7.50€',
+      },
+      {
+        id: '1',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 2',
+        price: '7.50€',
+      },
+      {
+        id: '2',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 3',
+        price: '7.50€',
+      },
+      {
+        id: '3',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 4',
+        price: '7.50€',
+      },
+    ],
   },
   {
     id: '1',
@@ -24,6 +54,36 @@ export default [
       longitude: 23.9036,
     },
     isVisited: false,
+    menu: [
+      {
+        id: '0',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 1',
+        price: '7.50€',
+      },
+      {
+        id: '1',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 2',
+        price: '7.50€',
+      },
+      {
+        id: '2',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 3',
+        price: '7.50€',
+      },
+      {
+        id: '3',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 4',
+        price: '7.50€',
+      },
+    ],
   },
   {
     id: '2',
@@ -37,6 +97,36 @@ export default [
       longitude: 23.9036,
     },
     isVisited: false,
+    menu: [
+      {
+        id: '0',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 1',
+        price: '7.50€',
+      },
+      {
+        id: '1',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 2',
+        price: '7.50€',
+      },
+      {
+        id: '2',
+        image:
+          'https://dglqtkywuo803.cloudfront.net/files/uploaded/rte/pjazz_kaunas_pica_restoranas.png',
+        name: 'Pavadinimas 3',
+        price: '7.50€',
+      },
+      {
+        id: '3',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 4',
+        price: '7.50€',
+      },
+    ],
   },
   {
     id: '3',
@@ -50,5 +140,35 @@ export default [
       longitude: 23.9036,
     },
     isVisited: false,
+    menu: [
+      {
+        id: '0',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 1',
+        price: '7.50€',
+      },
+      {
+        id: '1',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 2',
+        price: '7.50€',
+      },
+      {
+        id: '2',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 3',
+        price: '7.50€',
+      },
+      {
+        id: '3',
+        image:
+          'https://media-cdn.tripadvisor.com/media/photo-s/17/f4/3a/e7/handcrafted-original.jpg',
+        name: 'Pavadinimas 4',
+        price: '7.50€',
+      },
+    ],
   },
 ];

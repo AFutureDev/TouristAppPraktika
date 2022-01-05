@@ -4,6 +4,8 @@ import styles from './styles';
 import { useRoute } from '@react-navigation/native';
 
 import restaurants from '../../../assets/data/restaurants';
+import RestaurantReCItem from '../../components/RestaurantReCItem';
+import RestaurantMenu from '../../components/RestaurantMenuCItem';
 
 const RestaurantDetailedScreen = () => {
   const route = useRoute();
@@ -12,6 +14,7 @@ const RestaurantDetailedScreen = () => {
   const event = restaurants.find(
     (place) => place.id === route.params.restaurantId,
   );
+  const menuItem = restaurants.map((i) => i.menu.filter((f) => f.name));
 
   return (
     <ScrollView style={[styles.container]}>
@@ -29,7 +32,19 @@ const RestaurantDetailedScreen = () => {
           <Text>Kontaktai</Text>
         </Pressable>
       </View>
+      <View>
+        <View style={{ padding: 5 }}>
+          <Text style={{ fontSize: 16 }}>Meniu</Text>
+          <RestaurantMenu />
+        </View>
+      </View>
       <Text style={styles.description}>{event.description}</Text>
+      <View>
+        <View style={{ padding: 5 }}>
+          <Text style={{ fontSize: 16 }}>Rekomenduojame</Text>
+        </View>
+        <RestaurantReCItem />
+      </View>
     </ScrollView>
   );
 };

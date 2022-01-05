@@ -4,6 +4,7 @@ import styles from './styles';
 import { useRoute } from '@react-navigation/native';
 
 import partys from '../../../assets/data/partys';
+import PartyReCarItem from '../../components/PartyReCarItem';
 
 const PartyDetailedScreen = () => {
   const route = useRoute();
@@ -26,7 +27,9 @@ const PartyDetailedScreen = () => {
         </View>
         <View>
           <Pressable style={styles.ticketContainer}>
-            <Text style={styles.ticketText}>Įsigyti bilietus (Paysera tickets)</Text>
+            <Text style={styles.ticketText}>
+              Įsigyti bilietus (Paysera tickets)
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -35,6 +38,12 @@ const PartyDetailedScreen = () => {
         <Text style={styles.description}>{party.description}</Text>
       </View>
       {/* Image */}
+      <View>
+        <View style={{ padding: 5 }}>
+          <Text style={{ fontSize: 16 }}>Kiti Renginiai</Text>
+        </View>
+        <PartyReCarItem />
+      </View>
     </ScrollView>
   );
 };

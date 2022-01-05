@@ -12,15 +12,15 @@ import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
 
-import events from '../../../assets/data/events';
+import partys from '../../../assets/data/partys';
 
-const EventRecomendet = (props) => {
+const PartyReCarItem = (props) => {
   const route = useRoute();
   const width = useWindowDimensions().width;
   const navigation = useNavigation();
 
-  const recommendedEvents = events.filter(
-    (place) => place.id !== route.params.eventId,
+  const recommendedEvents = partys.filter(
+    (place) => place.id !== route.params.partyId,
   );
 
   return (
@@ -31,12 +31,16 @@ const EventRecomendet = (props) => {
         renderItem={({ item }) => (
           <Pressable
             onPress={() =>
-              navigation.navigate('EventDetailedPage', { eventId: item.id })
+              navigation.navigate('PartyDetailedScreen', { partyId: item.id })
             }
           >
             <View style={styles.container}>
+              <View style={styles.dateContainer}>
+                <Text style={styles.dateText}>{item.date}</Text>
+              </View>
               <Image style={styles.image} source={{ uri: item.image }} />
               <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.subText}>{item.subTitle}</Text>
             </View>
           </Pressable>
         )}
@@ -50,4 +54,4 @@ const EventRecomendet = (props) => {
   );
 };
 
-export default EventRecomendet;
+export default PartyReCarItem;
