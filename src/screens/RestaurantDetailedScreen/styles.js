@@ -11,10 +11,24 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderRadius: 10,
     overflow: 'hidden',
+    marginBottom: 20,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    margin: 10,
+  },
+  gMap: {
+    width: 120,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderColor: '#333333',
+    borderWidth: 1,
+  },
+  gText: {
+    fontWeight: 'bold',
   },
   textStyle: {
     justifyContent: 'center',

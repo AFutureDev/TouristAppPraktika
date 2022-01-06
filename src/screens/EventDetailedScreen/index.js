@@ -11,7 +11,7 @@ import {
 import styles from './styles';
 import { useRoute } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
-import EventCarouselItem from '../../components/EventCarouselItem';
+import openMap from 'react-native-open-maps';
 
 import events from '../../../assets/data/events';
 import EventRecomendet from '../../components/EventReCarItem';
@@ -23,6 +23,12 @@ const EventDetailedScreen = (props) => {
   const recommendedEvents = events.filter(
     (place) => place.id !== route.params.eventId,
   );
+
+  const mLatitude = event.coordinate.latitude;
+  const mLongitude = event.coordinate.longitude;
+  const mapEvent = () => {
+    openMap({ latitude: mLatitude, longitude: mLongitude });
+  };
 
   const width = useWindowDimensions().width;
   const navigation = useNavigation();
@@ -36,7 +42,7 @@ const EventDetailedScreen = (props) => {
       {/* Image */}
       <Image style={styles.image} source={{ uri: event.image }} />
       <View style={styles.row}>
-        <Pressable style={styles.gMap}>
+        <Pressable style={styles.gMap} onPress={mapEvent}>
           <Text style={styles.gText}>Google maps</Text>
         </Pressable>
         <Pressable style={styles.gMap}>
