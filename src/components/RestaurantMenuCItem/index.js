@@ -38,7 +38,7 @@ const RestaurantMenu = (props) => {
           >
             <View style={styles.container}>
               <Image style={styles.image} source={{ uri: item.menu[0].image }} />
-              <Text>{item.menu[0].name}</Text>
+              <Text>{item.menu}</Text>
             </View>
           </Pressable>
         )}

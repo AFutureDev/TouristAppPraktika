@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: '70%',
-    maxWidth: 200,
+    maxWidth: 100,
     maxHeight: 200,
   },
   logTextCont: {
@@ -34,11 +34,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 40,
     borderRadius: 5,
+    marginBottom: 10,
   },
-  regContainer: {
+  arbaText: {
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  textFbGgle: {
+    color: '#fff',
+    fontSize: 14,
   },
 });
 
