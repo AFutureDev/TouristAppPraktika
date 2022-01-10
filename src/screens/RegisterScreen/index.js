@@ -11,29 +11,21 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
-
-GoogleSignin.configure({
-  webClientId:
-    '634893355227-5okafvnailq49vf47p4t8emfi4j7hnts.apps.googleusercontent.com',
-});
-
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LOGIN_MUTATION = gql`
-  mutation Login($email: String!, $password: String!) {
-    login(loginInput: { email: $email, password: $password }) {
-      accessToken
+const REGISTER_MUTATION = gql`
+  mutation Register($username: String!, $email: String!, $password: String!) {
+    register(
+      registerInput: { username: $username, email: $email, password: $password }
+    ) {
+      id
+      email
     }
   }
 `;
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   useEffect(() => {
     _retrieveAccessToken().then();
   }, []);
@@ -56,45 +48,25 @@ const LoginScreen = () => {
     } catch (error) {}
   };
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('new');
+  const [email, setEmail] = useState('new');
+  const [password, setPassword] = useState('new');
 
   const navigation = useNavigation();
 
   const { height, width } = useWindowDimensions();
 
-  const [loginFunction, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+  const [registerFunction, { data, loading, error }] =
+    useMutation(REGISTER_MUTATION);
 
-  const login = async (email, password) => {
+  const register = async (username, email, password) => {
     try {
-      const accessToken = await loginFunction({
-        variables: { email: email, password: password },
+      await registerFunction({
+        variables: { username: username, email: email, password: password },
       });
-      await _storeAccessToken(accessToken.data.login.accessToken);
-      navigation.navigate('Route');
+      navigation.navigate('Login');
     } catch (e) {
       alert(e);
-    }
-  };
-
-  const GoogleLogin = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
-      this.setState({ userInfo });
-      console.log(userInfo);
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log(error);
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log(error);
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        console.log(error);
-      } else {
-        // some other error happened
-      }
     }
   };
 
@@ -111,14 +83,21 @@ const LoginScreen = () => {
         </View>
 
         <TextInput
-          placeholder="Vartotojas"
+          placeholder="Username"
+          value={username}
+          onChangeText={setUsername}
+          style={[styles.textInpt, { width: width - 80 }]}
+        />
+
+        <TextInput
+          placeholder="Email"
           value={email}
           onChangeText={setEmail}
           style={[styles.textInpt, { width: width - 80 }]}
         />
 
         <TextInput
-          placeholder="Slaptažodis"
+          placeholder="Password"
           value={password}
           onChangeText={setPassword}
           style={[styles.textInpt, { width: width - 80 }]}
@@ -129,19 +108,10 @@ const LoginScreen = () => {
           style={[styles.btnContainer, { width: width - 80 }]}
           onPress={() => {
             console.log('clicked');
-            login(email, password);
+            register(username, email, password);
           }}
         >
-          <Text style={{ fontSize: 14 }}>Login</Text>
-        </Pressable>
-
-        <Text style={styles.arbaText}>Arba</Text>
-
-        <Pressable
-          style={[styles.btnContainer, { width: width - 80 }]}
-          onPress={() => navigation.navigate('Register')}
-        >
-          <Text style={{ fontSize: 14 }}>Registruotis</Text>
+          <Text style={{ fontSize: 14 }}>Register</Text>
         </Pressable>
 
         <Pressable
@@ -154,7 +124,6 @@ const LoginScreen = () => {
         </Pressable>
 
         <Pressable
-          onPress={GoogleLogin}
           style={[
             styles.btnContainer,
             { width: width - 80, backgroundColor: '#4285F4' },
@@ -167,4 +136,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
