@@ -7,18 +7,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:634893355227:android:486a0b87d138f32ae064fe",
+        "mobilesdk_app_id": "1:634893355227:android:f13a2db0d9aee893e064fe",
         "android_client_info": {
-          "package_name": "com.touristAplikacija"
+          "package_name": "com.touristaplikacija"
         }
       },
       "oauth_client": [
         {
-          "client_id": "634893355227-eh2cnn6def6lqf6t0iop65qnt7994j21.apps.googleusercontent.com",
+          "client_id": "634893355227-44u58cijchhqj6r2eqv0bl7u3fjnnams.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.touristAplikacija",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+            "package_name": "com.touristaplikacija",
+            "certificate_hash": "c119d0ff2fa7cfb0969bce2b6ee15fca02c6cdeb"
           }
         },
         {

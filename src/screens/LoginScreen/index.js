@@ -13,7 +13,6 @@ import styles from './styles';
 
 import {
   GoogleSignin,
-  GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 
@@ -33,14 +32,25 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
+const GOOGLE_SIGNIN_MUTATION = gql`
+  mutation GoogleSignIn($idToken: String!) {
+    googleSignIn(googleSignInInput: { idToken: $idToken }) {
+      accessToken
+    }
+  }
+`;
+
 const LoginScreen = () => {
   useEffect(() => {
     _retrieveAccessToken().then();
   }, []);
 
-  _storeAccessToken = async (accessToken) => {
+  _storeAccessToken = async (accessToken, isGoogleSignIn) => {
     try {
       await AsyncStorage.setItem('token', accessToken);
+      if (isGoogleSignIn) {
+        await AsyncStorage.setItem('method', 'google');
+      }
     } catch (error) {
       alert('feature is not supported');
     }
@@ -65,6 +75,7 @@ const LoginScreen = () => {
   const { height, width } = useWindowDimensions();
 
   const [loginFunction, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+  const [googleLoginFunction] = useMutation(GOOGLE_SIGNIN_MUTATION);
 
   const login = async (email, password) => {
     try {
@@ -80,12 +91,16 @@ const LoginScreen = () => {
 
   const GoogleLogin = async () => {
     try {
+      console.log('Pressed Google Login');
       await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
-      this.setState({ userInfo });
-      console.log(userInfo);
+      const { idToken } = await GoogleSignin.signIn();
+      const accessToken = await googleLoginFunction({
+        variables: { idToken: idToken },
+      });
+      await _storeAccessToken(accessToken.data.googleSignIn.accessToken);
+      navigation.navigate('Route');
     } catch (error) {
+      alert(error);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log(error);
       } else if (error.code === statusCodes.IN_PROGRESS) {

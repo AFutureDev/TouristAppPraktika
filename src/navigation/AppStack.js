@@ -7,6 +7,7 @@ import { Image, Pressable, Text } from 'react-native';
 import EventDetailedScreen from '../screens/EventDetailedScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,8 +32,13 @@ const AuthStack = () => {
         ),
         headerRight: () => (
           <Pressable
-            onPress={() => {
+            onPress={async () => {
               console.log('clicked');
+              const value = await AsyncStorage.getItem('method');
+              if (value && value == 'google') {
+                console.log('signed out from google');
+                await GoogleSignin.signOut();
+              }
               AsyncStorage.removeItem('token');
               navigation.navigate('Login');
             }}
