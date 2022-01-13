@@ -97,7 +97,7 @@ const LoginScreen = () => {
       const accessToken = await googleLoginFunction({
         variables: { idToken: idToken },
       });
-      await _storeAccessToken(accessToken.data.googleSignIn.accessToken);
+      await _storeAccessToken(accessToken.data.googleSignIn.accessToken, true);
       navigation.navigate('Route');
     } catch (error) {
       alert(error);

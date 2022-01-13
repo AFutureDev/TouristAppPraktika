@@ -19,7 +19,12 @@ const HomeScreen = () => {
   const width = useWindowDimensions().width;
 
   const [allEvents, setAllEvents] = useState([...event]);
-
+  const [isVisitedStyle, setIsVisitedStyle] = useState({
+    backgroundColor: 'transparent',
+  });
+  const [isNotVisitedStyle, setIsNotVisitedStyle] = useState({
+    backgroundColor: 'transparent',
+  });
 
   return (
     <ScrollView>
@@ -27,19 +32,25 @@ const HomeScreen = () => {
         <View style={[styles.row]}>
           <Pressable
             onPress={(e) => {
+              setIsVisitedStyle({ backgroundColor: 'blue' });
+              setIsNotVisitedStyle({ backgroundColor: 'transparent' });
+
               allEvents.length !== 0
                 ? setAllEvents(allEvents.filter((e) => e.isVisited === true))
                 : setAllEvents(event);
             }}
           >
-            <Text>Lankytinos vietos</Text>
+            <Text style={isVisitedStyle}>Lankytinos vietos</Text>
           </Pressable>
           <Pressable
             onPress={(e) => {
+              setIsVisitedStyle({ backgroundColor: 'transparent' });
+              setIsNotVisitedStyle({ backgroundColor: 'blue' });
+
               setAllEvents(event.filter((e) => e.isVisited !== true));
             }}
           >
-            <Text>Visos lankytinos vietos</Text>
+            <Text style={isNotVisitedStyle}>Visos lankytinos vietos</Text>
           </Pressable>
         </View>
 
@@ -72,7 +83,6 @@ const HomeScreen = () => {
         </View>
         <Restaurant restaurant={restaurant} />
       </View>
-
     </ScrollView>
   );
 };
