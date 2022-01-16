@@ -61,7 +61,7 @@ const AuthStack = () => {
       }}
       children
     >
-      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Pagrindinis" component={HomeScreen} />
     </Drawer.Navigator>
   );
 };

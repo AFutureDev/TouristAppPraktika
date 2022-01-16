@@ -29,13 +29,7 @@ const RestaurantMenu = (props) => {
         data={recommendedEvents}
         keyExtractor={(e) => e.id}
         renderItem={({ item }) => (
-          <Pressable
-            onPress={() =>
-              navigation.navigate('RestaurantDetailedPage', {
-                eventId: item.id,
-              })
-            }
-          >
+          
             <View style={styles.container}>
               <Image
                 style={styles.image}
@@ -43,7 +37,6 @@ const RestaurantMenu = (props) => {
               />
               <Text>{item.menu[0].name}</Text>
             </View>
-          </Pressable>
         )}
         horizontal
         showsHorizontalScrollIndicator={false}

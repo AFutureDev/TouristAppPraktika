@@ -32,7 +32,14 @@ const HomeScreen = () => {
         <View style={[styles.row]}>
           <Pressable
             onPress={(e) => {
-              setIsVisitedStyle({ backgroundColor: 'blue' });
+              setIsVisitedStyle({
+                borderRadius: 5,
+                borderWidth: 1,
+                marginHorizontal: 10,
+                width: 150,
+                height: 20,
+                alignItems: 'center',
+              });
               setIsNotVisitedStyle({ backgroundColor: 'transparent' });
 
               allEvents.length !== 0
@@ -40,17 +47,27 @@ const HomeScreen = () => {
                 : setAllEvents(event);
             }}
           >
-            <Text style={isVisitedStyle}>Lankytinos vietos</Text>
+            <Text style={[isVisitedStyle, styles.isVisitedText]}>
+              Lankytinos vietos
+            </Text>
           </Pressable>
           <Pressable
+            style={[isNotVisitedStyle, styles.notVisitedContainer]}
             onPress={(e) => {
               setIsVisitedStyle({ backgroundColor: 'transparent' });
-              setIsNotVisitedStyle({ backgroundColor: 'blue' });
+              setIsNotVisitedStyle({
+                borderRadius: 5,
+                borderWidth: 1,
+                marginHorizontal: 10,
+                width: 150,
+                height: 20,
+                alignItems: 'center',
+              });
 
               setAllEvents(event.filter((e) => e.isVisited !== true));
             }}
           >
-            <Text style={isNotVisitedStyle}>Visos lankytinos vietos</Text>
+            <Text style={styles.isVisitedText}>Visos lankytinos vietos</Text>
           </Pressable>
         </View>
 
@@ -62,10 +79,10 @@ const HomeScreen = () => {
 
       <View>
         <View style={styles.row}>
-          <Pressable onPress={() => console.warn('pressed')}>
+          <Pressable>
             <Text>Renginiai netoliese</Text>
           </Pressable>
-          <Pressable onPress={() => console.warn('pr2')}>
+          <Pressable style={styles.isNotVisitedStyle}>
             <Text>Renginių sąrašas</Text>
           </Pressable>
         </View>

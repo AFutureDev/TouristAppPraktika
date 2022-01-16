@@ -21,6 +21,19 @@ const styles = StyleSheet.create({
   },
   isVisitedContainer: {
     backgroundColor: '#e4e4e4',
+    borderRadius: 5,
+    borderWidth: 1,
+    marginHorizontal: 5,
+    marginVertical: 5,
+  },
+  isVisitedText: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    fontSize: 14,
+  },
+  notVisitedContainer: {
+    marginLeft: 100,
   },
 });
 
