@@ -26,14 +26,19 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
+  },
+  orText: {
+    marginVertical: 30,
+    flexDirection: 'row',
+    marginHorizontal: 30,
   },
   btnContainer: {
     backgroundColor: '#e4e4e4',
     justifyContent: 'center',
     alignItems: 'center',
     height: 40,
-    borderRadius: 5,
+    borderRadius: 10,
     marginBottom: 10,
   },
   arbaText: {
@@ -41,9 +46,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  textFbGgle: {
+  textFb: {
     color: '#fff',
     fontSize: 14,
+    marginLeft: 10,
+  },
+  textGoogle: {
+    color: '#fff',
+    fontSize: 14,
+    marginLeft: 10,
+  },
+  colorBtnContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

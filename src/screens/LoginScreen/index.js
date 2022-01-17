@@ -8,6 +8,8 @@ import {
   useWindowDimensions,
   TextInput,
 } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
@@ -147,10 +149,28 @@ const LoginScreen = () => {
             login(email, password);
           }}
         >
-          <Text style={{ fontSize: 14 }}>Login</Text>
+          <Text style={{ fontSize: 14 }}>Prisijungti</Text>
         </Pressable>
 
-        <Text style={styles.arbaText}>Arba</Text>
+        <View style={styles.orText}>
+          <View
+            style={{
+              backgroundColor: '#A9A9A9',
+              height: 1,
+              flex: 1,
+              alignSelf: 'center',
+            }}
+          />
+          <Text style={styles.arbaText}>Arba</Text>
+          <View
+            style={{
+              backgroundColor: '#A9A9A9',
+              height: 1,
+              flex: 1,
+              alignSelf: 'center',
+            }}
+          />
+        </View>
 
         <Pressable
           style={[styles.btnContainer, { width: width - 80 }]}
@@ -165,17 +185,23 @@ const LoginScreen = () => {
             { width: width - 80, backgroundColor: '#4267B2' },
           ]}
         >
-          <Text style={styles.textFbGgle}>PRISIJUNGTI SU FACEBOOK</Text>
+          <View style={styles.colorBtnContainer}>
+            <FontAwesome name="facebook" size={16} color={'#fff'} />
+            <Text style={styles.textFb}>Prisijungti su Facebook</Text>
+          </View>
         </Pressable>
 
         <Pressable
           onPress={GoogleLogin}
           style={[
             styles.btnContainer,
-            { width: width - 80, backgroundColor: '#4285F4' },
+            { width: width - 80, backgroundColor: '#DB4437' },
           ]}
         >
-          <Text style={styles.textFbGgle}>PRISIJUNGTI SU GOOGLE</Text>
+          <View style={styles.colorBtnContainer}>
+            <AntDesign name="google" size={16} color={'#fff'} />
+            <Text style={styles.textGoogle}>Prisijungti su Google</Text>
+          </View>
         </Pressable>
       </View>
     </ScrollView>

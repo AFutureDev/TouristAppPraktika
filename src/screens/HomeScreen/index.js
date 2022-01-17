@@ -35,7 +35,7 @@ const HomeScreen = () => {
               setIsVisitedStyle({
                 borderRadius: 5,
                 borderWidth: 1,
-                marginHorizontal: 10,
+                marginHorizontal: 15,
                 width: 150,
                 height: 20,
                 alignItems: 'center',
@@ -58,7 +58,7 @@ const HomeScreen = () => {
               setIsNotVisitedStyle({
                 borderRadius: 5,
                 borderWidth: 1,
-                marginHorizontal: 10,
+                marginHorizontal: 15,
                 width: 150,
                 height: 20,
                 alignItems: 'center',
