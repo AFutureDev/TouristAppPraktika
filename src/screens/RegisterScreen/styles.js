@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 40,
     borderRadius: 5,
-    marginBottom: 10,
+    marginTop: 50,
   },
   arbaText: {
     margin: 10,

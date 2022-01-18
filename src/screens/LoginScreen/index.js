@@ -12,6 +12,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
+import { useForm, Controller } from 'react-hook-form';
 
 import {
   GoogleSignin,
@@ -25,6 +26,9 @@ GoogleSignin.configure({
 
 import { gql, useQuery, useMutation } from '@apollo/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const EMAIL_REGEX =
+  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const LOGIN_MUTATION = gql`
   mutation Login($email: String!, $password: String!) {
@@ -68,22 +72,35 @@ const LoginScreen = () => {
     } catch (error) {}
   };
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [username, setUsername] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
   const navigation = useNavigation();
 
   const { height, width } = useWindowDimensions();
 
-  const [loginFunction, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+  const {
+    control,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm();
+
+  const [loginFunction] = useMutation(LOGIN_MUTATION);
   const [googleLoginFunction] = useMutation(GOOGLE_SIGNIN_MUTATION);
 
-  const login = async (email, password) => {
+  const login = async () => {
+    const emailValue = getValues('email');
+    const passwordValue = getValues('password');
+
+    console.log(emailValue, passwordValue);
+
     try {
       const accessToken = await loginFunction({
-        variables: { email: email, password: password },
+        variables: { email: emailValue, password: passwordValue },
       });
+      //console.log(accessToken.data.login.accessToken);
       await _storeAccessToken(accessToken.data.login.accessToken);
       navigation.navigate('Route');
     } catch (e) {
@@ -127,7 +144,91 @@ const LoginScreen = () => {
           <Text style={styles.logText}>Prisijungimas</Text>
         </View>
 
-        <TextInput
+        <Controller
+          control={control}
+          name="email"
+          rules={{
+            required: 'Įveskite vartotojo el. pašta',
+            pattern: { value: EMAIL_REGEX, message: 'Neteisingas El. paštas' },
+          }}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }) => (
+            <View>
+              <TextInput
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                placeholder="El. paštas"
+                style={[
+                  styles.textInpt,
+                  {
+                    width: width - 80,
+                    borderColor: error ? 'red' : '#e8e8e8',
+                  },
+                ]}
+              />
+              {error && (
+                <Text
+                  style={{
+                    color: 'red',
+                    alignSelf: 'stretch',
+                    marginLeft: 15,
+                  }}
+                >
+                  {error.message || 'Error'}
+                </Text>
+              )}
+            </View>
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="password"
+          rules={{
+            required: 'Įveskite vartotojo slaptažodį',
+            minLength: {
+              value: 1,
+              message: 'Slaptažodis gali būti ne mažiau nei 3',
+            },
+          }}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }) => (
+            <View>
+              <TextInput
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                placeholder="Slaptažodis"
+                secureTextEntry={true}
+                style={[
+                  styles.textInpt,
+                  {
+                    width: width - 80,
+                    borderColor: error ? 'red' : '#e8e8e8',
+                  },
+                ]}
+              />
+              {error && (
+                <Text
+                  style={{
+                    color: 'red',
+                    alignSelf: 'stretch',
+                    marginLeft: 15,
+                  }}
+                >
+                  {error.message || 'Error'}
+                </Text>
+              )}
+            </View>
+          )}
+        />
+
+        {/* <TextInput
           placeholder="Vartotojas"
           value={email}
           onChangeText={setEmail}
@@ -140,14 +241,11 @@ const LoginScreen = () => {
           onChangeText={setPassword}
           style={[styles.textInpt, { width: width - 80 }]}
           //secureTextEntry={true}
-        />
+        /> */}
 
         <Pressable
           style={[styles.btnContainer, { width: width - 80 }]}
-          onPress={() => {
-            console.log('clicked');
-            login(email, password);
-          }}
+          onPress={handleSubmit(login)}
         >
           <Text style={{ fontSize: 14 }}>Prisijungti</Text>
         </Pressable>
