@@ -16,7 +16,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const Drawer = createDrawerNavigator();
 
-const AuthStack = () => {
+const AppStack = () => {
   const navigation = useNavigation();
 
   function CustomDrawerContent(props) {
@@ -66,4 +66,4 @@ const AuthStack = () => {
   );
 };
 
-export default AuthStack;
+export default AppStack;
